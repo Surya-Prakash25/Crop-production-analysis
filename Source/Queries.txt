@@ -1,0 +1,42 @@
+-- Total Production per State
+SELECT State_Name, SUM(Production) AS Total_Production
+FROM project_table
+GROUP BY State_Name
+ORDER BY Total_Production DESC;
+
+-- Total Area Cultivated per Crop
+SELECT Crop, SUM(Area) AS Total_Area
+FROM project_table
+GROUP BY Crop
+ORDER BY Total_Area DESC;
+
+-- Average Production per District
+SELECT District_Name, AVG(Production) AS Average_Production
+FROM project_table
+GROUP BY District_Name
+ORDER BY Average_Production DESC;
+
+-- Production per Season for a Given State
+SELECT Season, SUM(Production) AS Total_Production
+FROM project_table
+WHERE State_Name = 'State_Name'
+GROUP BY Season
+ORDER BY Total_Production DESC;
+
+-- Top 5 States by Production for a Specific Crop
+SELECT State_Name, SUM(Production) AS Total_Production
+FROM project_table
+WHERE Crop = 'Crop_Name'
+GROUP BY State_Name
+ORDER BY Total_Production DESC
+LIMIT 5;
+
+-- Year-over-Year Production Growth for a Specific Crop
+SELECT Crop_Year, SUM(Production) AS Total_Production
+FROM project_table
+WHERE Crop = 'Crop_Name'
+GROUP BY Crop_Year
+ORDER BY Crop_Year;
+
+-- Production per Crop in a Specific District
+SELECT Crop, SUM(Production)
